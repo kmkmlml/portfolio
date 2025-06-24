@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗЛАТА КАЛИНИНА • PORTFOLIO 2025</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Exo+2:wght@100;200;300;400;500;600;700;800;900&family=Black+Ops+One&family=Bungee&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: #1a1a28;
+            --accent-red: #ff073a;
+            --accent-cyan: #00ffff;
+            --accent-purple: #8b5cf6;
+            --accent-neon: #00ff41;
+            --text-primary: #ffffff;
+            --text-secondary: #a8a8b3;
+            --text-glow: #ff073a;
+            --shadow-red: 0 0 30px rgba(255,7,58,0.6);
+            --shadow-cyan: 0 0 30px rgba(0,255,255,0.4);
+            --shadow-purple: 0 0 30px rgba(139,92,246,0.4);
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Loading Screen */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOut 1.5s ease-in-out 3s forwards;
+        }
+
+        .loading-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            animation: typewriter 2s steps(22) 1s forwards, textGlow 1s ease-in-out 3s infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid var(--accent-red);
+            width: 0;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 22ch; }
+        }
+
+        @keyframes textGlow {
+            from { 
+                text-shadow: 0 0 20px var(--accent-red);
+                color: var(--accent-red);
+            }
+            to { 
+                text-shadow: 0 0 40px var(--accent-red), 0 0 60px var(--accent-red);
+                color: #ff4d6d;
+            }
+        }
+
+        @keyframes fadeOut {
+            to { 
+                opacity: 0; 
+                visibility: hidden; 
+            }
+        }
+
+        /* Animated Grid Background */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255,7,58,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,7,58,0.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        /* Floating Red Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            animation: float-particle 12s linear infinite;
+            box-shadow: 0 0 10px var(--accent-red);
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header with Red Glow */
+        .header {
+            text-align: center;
+            padding: 6rem 4rem;
+            background: rgba(26,26,40,0.95);
+            margin-bottom: 4rem;
+            border-radius: 30px;
+            border: 3px solid var(--accent-red);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-red);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--accent-red);
+            animation: pulse-line 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-line {
+            0%, 100% { 
+                opacity: 1; 
+                box-shadow: 0 0 20px var(--accent-red);
+            }
+            50% { 
+                opacity: 0.7; 
+                box-shadow: 0 0 40px var(--accent-red);
+            }
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--accent-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: rotate-border 6s linear infinite;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-red);
+        }
+
+        .profile-photo::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            background: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face') center/cover;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .profile-photo::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 
+                0 0 15px var(--accent-cyan),
+                inset 0 0 15px rgba(0,255,255,0.2);
+        }
+
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-text {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .header h1 {
+            font-family: 'Black Ops One', cursive;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--accent-red);
+            text-shadow: 0 0 30px var(--accent-red);
+            animation: text-glitch 4s ease-in-out infinite;
+            letter-spacing: 3px;
+        }
+
+        @keyframes text-glitch {
+            0%, 90%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); text-shadow: 2px 0 var(--accent-cyan), -2px 0 var(--accent-red); }
+            40% { transform: translateX(2px); text-shadow: -2px 0 var(--accent-cyan), 2px 0 var(--accent-red); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
+        }
+
+        .cyber-subtitle {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        .tagline {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .tagline::before {
+            content: '> ';
+            color: var(--accent-red);
+            font-family: 'Courier New', monospace;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .contact-card {
+            background: rgba(26,26,40,0.9);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid var(--accent-red);
+            position: relative;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,7,58,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .contact-card:hover::after {
+            left: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-red);
+            border-color: var(--accent-cyan);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px var(--accent-red);
+        }
+
+        .contact-card h4 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-card p {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(26, 26, 40, 0.8);
+            backdrop-filter: blur(25px);
+            margin: 5rem 0;
+            padding: 4rem;
+            border-radius: 30px;
+            border: 2px solid rgba(255,7,58,0.4);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255,7,58,0.2);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-red);
+            animation: scan-line 4s linear infinite;
+        }
+
+        @keyframes scan-line {
+            0% { 
+                transform: translateX(-100%); 
+                box-shadow: 0 0 10px var(--accent-red);
+            }
+            100% { 
+                transform: translateX(100%); 
+                box-shadow: 0 0 20px var(--accent-red);
+            }
+        }
+
+        .section-title {
+            font-family: 'Bungee', cursive;
+            font-size: 3.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px var(--accent-red);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: var(--accent-red);
+            box-shadow: 0 0 10px var(--accent-red);
+        }
+
+        /* Stats Grid */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: rgba(26,26,40,0.9);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            border: 2px solid rgba(255,7,58,0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-red);
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-red);
+            border-color: var(--accent-cyan);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--accent-red);
+            animation: number-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes number-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            background: rgba(26,26,40,0.9);
+            padding: 3rem;
+            margin: 2.5rem 0;
+            border-radius: 25px;
+            border-left: 6px solid var(--accent-red);
+            position: relative;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent-red);
+            border: 3px solid var(--bg-primary);
+        }
+
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.6; transform: translateY(-50%) scale(1.3); }
+        }
+
+        .experience-item:hover {
+            transform: translateX(25px);
+            box-shadow: var(--shadow-red);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .experience-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--accent-red);
+        }
+
+        .experience-company {
+            color: var(--accent-purple);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .experience-period {
+            background: rgba(255, 7, 58, 0.2);
+            color: var(--accent-red);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--accent-red);
+        }
+
+        .experience-list {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .experience-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .experience-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-size: 1rem;
+            animation: arrow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes arrow-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Work Grid */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .work-card {
+            background: rgba(26, 26, 40, 0.95);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid rgba(255,7,58,0.4);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-red);
+            z-index: 1;
+        }
+
+        .work-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-red);
+            border-color: var(--accent-cyan);
+        }
+
+        .work-header {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(255,7,58,0.1) 0%, rgba(0,255,255,0.1) 100%);
+            text-align: center;
+        }
+
+        .work-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            box-shadow: var(--shadow-red);
+            animation: icon-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes icon-glow {
+            0%, 100% { box-shadow: var(--shadow-red); }
+            50% { box-shadow: var(--shadow-cyan); }
+        }
+
+        .work-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .work-type {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .work-content {
+            padding: 2.5rem;
+            background: rgba(17,17,24,0.9);
+        }
+
+        .work-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .work-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .work-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-red);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--accent-red);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-red);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .work-link:hover::before {
+            left: 0;
+        }
+
+        .work-link:hover {
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--accent-red);
+            transform: translateY(-2px);
+        }
+
+        /* Archive Section */
+        .archive-section {
+            background: rgba(17,17,24,0.95);
+            border: 2px solid var(--accent-purple);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(139,92,246,0.3);
+        }
+
+        .archive-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--accent-purple);
+        }
+
+        .archive-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .archive-link {
+            display: inline-block;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .archive-link:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--accent-cyan);
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(26,26,40,0.9);
+            border: 2px solid rgba(255,7,58,0.5);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-red);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .skill-tag:hover::before {
+            left: 0;
+        }
+
+        .skill-tag:hover {
+            color: var(--bg-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255,7,58,0.4);
+            border-color: var(--accent-cyan);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 6rem;
+            padding: 4rem 3rem;
+            background: rgba(26,26,40,0.95);
+            border-radius: 30px;
+            border: 2px solid var(--accent-red);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-red);
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-red);
+        }
+
+        .footer h2 {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-red);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px var(--accent-red);
+            text-transform: uppercase;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .social-link {
+            width: 70px;
+            height: 70px;
+            background: rgba(26,26,40,0.9);
+            border: 3px solid var(--accent-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-red);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-red);
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 50%;
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link:hover {
+            color: var(--bg-primary);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: var(--shadow-red);
+            border-color: var(--accent-cyan);
+        }
+
+        .footer-text {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .footer-highlight {
+            color: var(--accent-red);
+            font-weight: 600;
+            text-shadow: 0 0 5px var(--accent-red);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 3rem; }
+            .loading-text { font-size: 1.8rem; }
+            .container { padding: 1rem; }
+            .section { padding: 2rem; }
+            .work-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .social-links { gap: 1rem; }
+            .profile-section { 
+                flex-direction: column; 
+                gap: 2rem; 
+                text-align: center;
+            }
+            .header-text { text-align: center; }
+            .cyber-subtitle { font-size: 1.4rem; }
+            .section-title { font-size: 2.5rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+            border-radius: 10px;
+            border: 2px solid var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-red);
+            box-shadow: 0 0 10px var(--accent-red);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay">
+        <div class="loading-text">Initializing Portfolio...</div>
+    </div>
+
+    <!-- Cyber Grid Background -->
+    <div class="cyber-grid"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="profile-section">
+                <div class="profile-photo"></div>
+                <div class="header-text">
+                    <h1>ЗЛАТА КАЛИНИНА</h1>
+                    <p class="cyber-subtitle">DIGITAL CREATOR</p>
+                    <p class="tagline">НИУ ВШЭ • Медиакоммуникации & Биотехнологии<br>
+                    Стажер ART FLASH • Creative Content Specialist</p>
+                </div>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h4>Связь</h4>
+                    <p>8 916 419 08 20</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>Email</h4>
+                    <p>lattezlata@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Образование</h4>
+                    <p>НИУ ВШЭ • 2 курс</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">ДОСТИЖЕНИЯ</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">02</div>
+                    <div class="stat-label">Курс обучения</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Месяцев стажировки</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Публикаций</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-label">Охват аудитории</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">ОПЫТ РАБОТЫ</h2>
+            
+            <div class="experience-item">
+                <h3 class="experience-title">Стажер</h3>
+                <div class="experience-company">ART FLASH • Онлайн-журнал об искусстве</div>
+                <div class="experience-period">Декабрь 2024 - Настоящее время</div>
+                <ul class="experience-list">
+                    <li>Написание крупных статей и интервью с деятелями искусства</li>
+                    <li>Создание контента для Telegram-канала (50+ постов)</li>
+                    <li>Создание карточек и визуального контента в Figma</li>
+                    <li>Подготовка вопросов для интервью</li>
+                    <li>Редактирование и корректура материалов</li>
+                    <li>Подбор иллюстраций для публикаций</li>
+                    <li>Верстка материалов</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3 class="experience-title">Студентка медиакоммуникаций</h3>
+                <div class="experience-company">НИУ ВШЭ • Факультет медиакоммуникаций</div>
+                <div class="experience-period">Сентябрь 2023 - Настоящее время</div>
+                <ul class="experience-list">
+                    <li>Основная программа: Медиакоммуникации</li>
+                    <li>Майнор: Биотехнологии</li>
+                    <li>Дополнительная микростепень: Консультант в области ЗОЖ</li>
+                    <li>Практические проекты в области медиа</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">ПОРТФОЛИО РАБОТ</h2>
+            
+            <div class="work-grid">
+                <div class="work-card">
+                    <div class="work-header">
+                        <div class="work-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3 class="work-title">Театральные новинки</h3>
+                        <div class="work-type">Журналистика</div>
+                    </div>
+                    <div class="work-content">
+                        <p class="work-description">
+                            Комплексный анализ театральных новинок сезона с глубоким погружением в тренды и детальными рецензиями актуальных постановок. Профессиональный взгляд на современное театральное пространство.
+                        </p>
+                        <div class="work-links">
+                            <a href="https://docs.google.com/document/d/1ym-o_lFG91W-iwV0GAhpLSw_N0-MawrUVjpsk-MXneQ/edit" target="_blank" class="work-link">
+                                <i class="fas fa-external-link-alt"></i> Читать
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-header">
+                        <div class="work-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="work-title">Репортаж о театре</h3>
+                        <div class="work-type">Видеопроизводство</div>
+                    </div>
+                    <div class="work-content">
+                        <p class="work-description">
+                            Эксклюзивный видео-репортаж, раскрывающий закулисную жизнь театра. Уникальные кадры процесса создания спектаклей и работы актеров за сценой.
+                        </p>
+                        <div class="work-links">
+                            <a href="https://drive.google.com/file/d/1MZPHtVJgofXBIyilgkaP2UcQh9cokiGj/view?usp=drivesdk" target="_blank" class="work-link">
+                                <i class="fas fa-play-circle"></i> Смотреть
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-header">
+                        <div class="work-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3 class="work-title">Короткометражный фильм</h3>
+                        <div class="work-type">Кинематография</div>
+                    </div>
+                    <div class="work-content">
+                        <p class="work-description">
+                            Авторский короткометражный фильм с полным циклом производства. От концепции до финального монтажа - демонстрация всех этапов кинопроизводства.
+                        </p>
+                        <div class="work-links">
+                            <a href="https://drive.google.com/file/d/1rq11sqKNiD1Rxn9aBXIEfM-5MM6W9hlL/view?usp=drivesdk" target="_blank" class="work-link">
+                                <i class="fas fa-film"></i> Фильм
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-header">
+                        <div class="work-icon">
+                            <i class="fas fa-script"></i>
+                        </div>
+                        <h3 class="work-title">Сценарий & Раскадровка</h3>
+                        <div class="work-type">Пре-продакшн</div>
+                    </div>
+                    <div class="work-content">
+                        <p class="work-description">
+                            Комплексная пре-продакшн работа: детально проработанный сценарий и профессиональная раскадровка. Полное планирование видеопроекта от идеи до съемки.
+                        </p>
+                        <div class="work-links">
+                            <a href="https://drive.google.com/file/d/1A5cQ0AnTEQrGsEWEyfJ5JXoZTML80A41/view?usp=drivesdk" target="_blank" class="work-link">
+                                <i class="fas fa-file-alt"></i> Сценарий
+                            </a>
+                            <a href="https://drive.google.com/file/d/1FCFHn3_hmiIpyH8wBIuxgfMW5sWNoTtX/view?usp=drivesdk" target="_blank" class="work-link">
+                                <i class="fas fa-images"></i> Раскадровка
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-header">
+                        <div class="work-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3 class="work-title">Социологическое исследование</h3>
+                        <div class="work-type">Аналитика</div>
+                    </div>
+                    <div class="work-content">
+                        <p class="work-description">
+                            Полномасштабное социологическое исследование с визуализацией данных и презентацией результатов. Аналитическая работа с большими массивами информации.
+                        </p>
+                        <div class="work-links">
+                            <a href="https://drive.google.com/file/d/1fglmL6YzyfJw3Wqqerip0L4tEnbj_DA4/view?usp=drivesdk" target="_blank" class="work-link">
+                                <i class="fas fa-chart-line"></i> Презентация
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-header">
+                        <div class="work-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3 class="work-title">Редакторская работа</h3>
+                        <div class="work-type">Редактирование</div>
+                    </div>
+                    <div class="work-content">
+                        <p class="work-description">
+                            Профессиональная редакторская работа: качественный рерайт статей и экспертное рецензирование научных работ. Оптимизация контента для различных платформ.
+                        </p>
+                        <div class="work-links">
+                            <a href="https://docs.google.com/document/d/13-QxPpNkukndvHazZEXgy-sGwLt4RpXgb7hK_ToROc8/edit" target="_blank" class="work-link">
+                                <i class="fas fa-edit"></i> Рерайт
+                            </a>
+                            <a href="https://docs.google.com/file/d/1HrU5TnJHS9RBOgL5SS1xrQaAkG-1hj1e/edit?usp=docslist_api&filetype=msword" target="_blank" class="work-link">
+                                <i class="fas fa-clipboard-check"></i> Рецензия
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-header">
+                        <div class="work-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <h3 class="work-title">ART FLASH Content</h3>
+                        <div class="work-type">Social Media</div>
+                    </div>
+                    <div class="work-content">
+                        <p class="work-description">
+                            Создание и управление контентом для Telegram-канала журнала ART FLASH. Работа с аудиторией 15K+ подписчиков, создание вирусного контента об искусстве.
+                        </p>
+                        <div class="archive-section">
+                            <div class="archive-title">📚 Архив больших статей</div>
+                            <p class="archive-description">Коллекция интервью и статей, созданных в рамках стажировки в ART FLASH</p>
+                            <a href="https://artflash.ru/author/zlata-kalinina" target="_blank" class="archive-link">
+                                <i class="fas fa-archive"></i> Открыть архив
+                            </a>
+                        </div>
+                        <div class="work-links">
+                            <a href="https://t.me/AFmagazine/22565" target="_blank" class="work-link">
+                                <i class="fas fa-link"></i> Пост 1
+                            </a>
+                            <a href="https://t.me/AFmagazine/21960" target="_blank" class="work-link">
+                                <i class="fas fa-link"></i> Пост 2
+                            </a>
+                            <a href="https://t.me/AFmagazine/20426" target="_blank" class="work-link">
+                                <i class="fas fa-link"></i> Пост 3
+                            </a>
+                            <a href="https://t.me/AFmagazine/21788" target="_blank" class="work-link">
+                                <i class="fas fa-link"></i> Пост 4
+                            </a>
+                        </div>
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="https://t.me/AFmagazine" target="_blank" class="work-link">
+                                <i class="fab fa-telegram"></i> Канал ART FLASH
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">НАВЫКИ</h2>
+            <div class="skills">
+                <div class="skill-tag">📰 Журналистика</div>
+                <div class="skill-tag">📱 SMM</div>
+                <div class="skill-tag">🎬 Видеопроизводство</div>
+                <div class="skill-tag">🎨 Figma</div>
+                <div class="skill-tag">✍️ Редактирование</div>
+                <div class="skill-tag">📝 Копирайтинг</div>
+                <div class="skill-tag">🎤 Интервью</div>
+                <div class="skill-tag">📅 Контент-стратегия</div>
+                <div class="skill-tag">🎭 Сценарии</div>
+                <div class="skill-tag">🎨 Раскадровка</div>
+                <div class="skill-tag">📊 Аналитика</div>
+                <div class="skill-tag">📋 Презентации</div>
+                <div class="skill-tag">✅ Корректура</div>
+                <div class="skill-tag">🧬 Биотехнологии</div>
+                <div class="skill-tag">💎 Креативное направление</div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <h2>СВЯЗАТЬСЯ СО МНОЙ</h2>
+            <div class="social-links">
+                <a href="tel:89164190820" class="social-link" title="Позвонить">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="mailto:lattezlata@gmail.com" class="social-link" title="Написать Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://t.me/zlatiiiiix" class="social-link" target="_blank" title="Мой Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+            <div class="footer-text">
+                <p><strong class="footer-highlight">© 2025 ЗЛАТА КАЛИНИНА</strong></p>
+                <p>НИУ ВШЭ • <span class="footer-highlight">Медиакоммуникации & Биотехнологии</span></p>
+                <p>ART FLASH • <span class="footer-highlight">Digital Content Specialist</span></p>
+                <p style="margin-top: 2rem; font-style: italic; color: var(--accent-cyan);">
+                    "Создавая медиа будущего сегодня"
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 8) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Set initial state for scroll animations
+            document.querySelectorAll('.work-card, .stat-card, .experience-item, .skill-tag').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Red glitch effect on random elements
+            setInterval(() => {
+                const glitchElements = document.querySelectorAll('.work-title, .section-title, h1');
+                const randomElement = glitchElements[Math.floor(Math.random() * glitchElements.length)];
+                if (randomElement) {
+                    randomElement.style.textShadow = `
+                        ${Math.random() * 3}px 0 #00ffff,
+                        ${Math.random() * -3}px 0 #ff073a
+                    `;
+                    setTimeout(() => {
+                        randomElement.style.textShadow = '';
+                    }, 200);
+                }
+            }, 5000);
+        });
+
+        // Dynamic color pulse on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            document.body.style.filter = 'hue-rotate(10deg)';
+            
+            scrollTimeout = setTimeout(() => {
+                document.body.style.filter = 'hue-rotate(0deg)';
+            }, 150);
+        });
+    </script>
+</body>
+</html>
